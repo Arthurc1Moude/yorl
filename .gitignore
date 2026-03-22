@@ -38,6 +38,7 @@ packages/*/*.tgz
 
 # VSIX packages (keep the built ones, ignore temp)
 *.vsix.tmp
+*.vsix
 
 # Editor and IDE files
 .vscode/
