@@ -1,21 +1,11 @@
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff6600;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#ff9900;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+  <!-- Lowercase y drawn with straight lines -->
+  <!-- Left vertical line -->
+  <rect x="35" y="35" width="15" height="50" fill="#6b6b6b"/>
   
-  <!-- Y Letter -->
-  <polygon points="30,20 45,20 64,50 83,20 98,20 98,35 73,70 73,108 55,108 55,70 30,35" 
-           fill="url(#grad)"/>
+  <!-- Right diagonal line going down -->
+  <polygon points="78,35 93,35 70,100 55,100" fill="#6b6b6b"/>
   
-  <!-- Lightning bolt line -->
-  <polyline points="35,95 48,95 43,103 58,103 53,111 73,111 68,103 83,103 78,95 93,95" 
-            fill="none"
-            stroke="url(#grad)" 
-            stroke-width="4" 
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
+  <!-- Top horizontal connecting piece -->
+  <rect x="50" y="35" width="28" height="15" fill="#6b6b6b"/>
 </svg>
