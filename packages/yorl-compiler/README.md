@@ -1,9 +1,9 @@
 # Yorl Programming Language
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-00d4ff?style=flat&logo=npm&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
-[![package size](https://img.shields.io/badge/size-11.1KB-00d4ff?style=flat&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00d4ff.svg?style=flat&labelColor=1a1a2e)](https://opensource.org/licenses/MIT)
-[![Build Tool](https://img.shields.io/badge/Build-Flex%2FBison-00d4ff?style=flat&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-ff00ff?style=flat&logo=npm&logoColor=ff00ff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-11.1KB-00ffff?style=flat&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-00ff00?style=flat&labelColor=0d1117)](https://opensource.org/licenses/MIT)
+[![Build Tool](https://img.shields.io/badge/Build-Flex%2FBison-ff0080?style=flat&logo=gnu&logoColor=ff0080&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl)
 
 ## Compiler Package
 

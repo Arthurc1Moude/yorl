@@ -1,17 +1,17 @@
 # Yorl Programming Language
 
-[![GitHub release](https://img.shields.io/github/v/release/Arthurc1Moude/yorl?style=flat&color=00d4ff&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/releases)
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/Arthurc1Moude/yorl?style=flat&color=00d4ff&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00d4ff.svg?style=flat&labelColor=1a1a2e)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/Arthurc1Moude/yorl?style=flat&color=00d4ff&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/issues)
-[![GitHub stars](https://img.shields.io/github/stars/Arthurc1Moude/yorl?style=flat&color=00d4ff&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Arthurc1Moude/yorl?style=flat&color=00d4ff&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/network)
+[![GitHub release](https://img.shields.io/github/v/release/Arthurc1Moude/yorl?style=flat&color=ff00ff&labelColor=0d1117&logo=github&logoColor=ff00ff)](https://github.com/Arthurc1Moude/yorl/releases)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/Arthurc1Moude/yorl?style=flat&color=00ffff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-00ff00?style=flat&labelColor=0d1117)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/Arthurc1Moude/yorl?style=flat&color=ff0080&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Arthurc1Moude/yorl?style=flat&color=ffff00&labelColor=0d1117&logo=github&logoColor=ffff00)](https://github.com/Arthurc1Moude/yorl/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Arthurc1Moude/yorl?style=flat&color=ff6600&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/network)
 
 A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
 
 ## Table of Contents
 - [Overview](#overview)
-- [Packages](#packages)
+- [Package](#package)
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Language Syntax](#language-syntax)
@@ -29,13 +29,11 @@ A simple configuration programming language (.yol/.yorl) for defining classes wi
 
 Yorl is a configuration programming language designed for defining structured configurations with classes, functions, imports, and exports. It supports nested configurations, built-in types, and a comprehensive standard library.
 
-## Packages
-
-This repository contains two packages:
+## Package
 
 ### 📦 Language Support Package
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-00d4ff?style=flat&logo=npm&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
-[![package size](https://img.shields.io/badge/size-27.1KB-00d4ff?style=flat&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-ff00ff?style=flat&logo=npm&logoColor=ff00ff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-27.1KB-00ffff?style=flat&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
 
 **@arthurc1moude/yorl-language** - VS Code extension with syntax highlighting
 
@@ -45,17 +43,7 @@ npm install @arthurc1moude/yorl-language
 code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
 ```
 
-### 🔧 Compiler Package
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-00d4ff?style=flat&logo=npm&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
-[![package size](https://img.shields.io/badge/size-11.1KB-00d4ff?style=flat&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
-
-**@arthurc1moude/yorl-compiler** - Compiler source code (Flex/Bison)
-
-```bash
-npm install @arthurc1moude/yorl-compiler
-```
-
-> **Note**: Source code is available in the `packages/` directory. The compiler package contains the lexer, parser, and build system.
+> **Note**: Compiler source code is protected and not published to npm. Build from source in `packages/yorl-compiler/` directory.
 
 ## Features
 
@@ -214,7 +202,7 @@ export class.{imageProcessor} -as[png] -to(dir='@path{/output}');
 
 ### Prerequisites
 
-**Note**: Source code is located in `packages/yorl-compiler/` directory.
+**Note**: Compiler source code is located in `packages/yorl-compiler/` directory (not published to npm).
 
 ```bash
 # Ubuntu/Debian
