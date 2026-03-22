@@ -1,9 +1,9 @@
 # Yorl Programming Language
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue?style=for-the-badge&logo=npm)](https://github.com/Arthurc1Moude/yorl/packages)
-[![package size](https://img.shields.io/badge/size-27.1KB-green?style=for-the-badge)](https://github.com/Arthurc1Moude/yorl/packages)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![VS Code Extension](https://img.shields.io/badge/VS%20Code-Extension-blue?style=for-the-badge&logo=visual-studio-code)](https://github.com/Arthurc1Moude/yorl)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-00d4ff?style=flat&logo=npm&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-27.1KB-00d4ff?style=flat&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl/packages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-00d4ff.svg?style=flat&labelColor=1a1a2e)](https://opensource.org/licenses/MIT)
+[![VS Code Extension](https://img.shields.io/badge/VS%20Code-Extension-00d4ff?style=flat&logo=visual-studio-code&labelColor=1a1a2e)](https://github.com/Arthurc1Moude/yorl)
 
 ## Language Support Package
 
