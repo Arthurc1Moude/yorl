@@ -1,6 +1,6 @@
 /*
  * Yorl Compiler Installer for Linux
- * GUI installer using GTK3
+ * GUI installer using GTK4
  */
 
 #include <gtk/gtk.h>
@@ -47,7 +47,27 @@ bool makeExecutable(const std::string& path) {
 void update_status(const char* message, double progress) {
     gtk_label_set_text(GTK_LABEL(status_label), message);
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(progress_bar), progress);
-    while (gtk_events_pending()) gtk_main_iteration();
+    while (g_main_context_pending(NULL)) g_main_context_iteration(NULL, FALSE);
+}
+
+void show_error_dialog(const char* message) {
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(window),
+                                               GTK_DIALOG_MODAL,
+                                               GTK_MESSAGE_ERROR,
+                                               GTK_BUTTONS_OK,
+                                               "%s", message);
+    g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
+    gtk_widget_show(dialog);
+}
+
+void show_success_dialog(const char* message) {
+    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(window),
+                                               GTK_DIALOG_MODAL,
+                                               GTK_MESSAGE_INFO,
+                                               GTK_BUTTONS_OK,
+                                               "%s", message);
+    g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
+    gtk_widget_show(dialog);
 }
 
 void install_yolex() {
@@ -60,13 +80,7 @@ void install_yolex() {
     // Check curl
     update_status("Checking dependencies...", 0.1);
     if (system("which curl > /dev/null 2>&1") != 0) {
-        GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-            GTK_DIALOG_DESTROY_WITH_PARENT,
-            GTK_MESSAGE_ERROR,
-            GTK_BUTTONS_CLOSE,
-            "curl is not installed. Please install curl first.");
-        gtk_dialog_run(GTK_DIALOG(dialog));
-        gtk_widget_destroy(dialog);
+        show_error_dialog("curl is not installed. Please install curl first.");
         gtk_widget_set_sensitive(install_button, TRUE);
         return;
     }
@@ -79,13 +93,7 @@ void install_yolex() {
     // Download
     update_status("Downloading yolex from GitHub...", 0.4);
     if (downloadFile(YOLEX_URL, yolexPath) != 0) {
-        GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-            GTK_DIALOG_DESTROY_WITH_PARENT,
-            GTK_MESSAGE_ERROR,
-            GTK_BUTTONS_CLOSE,
-            "Failed to download yolex. Check your internet connection.");
-        gtk_dialog_run(GTK_DIALOG(dialog));
-        gtk_widget_destroy(dialog);
+        show_error_dialog("Failed to download yolex. Check your internet connection.");
         gtk_widget_set_sensitive(install_button, TRUE);
         return;
     }
@@ -97,14 +105,8 @@ void install_yolex() {
     // Complete
     update_status("Installation complete!", 1.0);
     
-    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(window),
-        GTK_DIALOG_DESTROY_WITH_PARENT,
-        GTK_MESSAGE_INFO,
-        GTK_BUTTONS_OK,
-        "Yorl compiler installed successfully!\n\nLocation: %s\n\nRun 'yolex --version' to verify.",
-        yolexPath.c_str());
-    gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
+    std::string msg = "Yorl compiler installed successfully!\n\nLocation: " + yolexPath + "\n\nRun 'yolex --version' to verify.";
+    show_success_dialog(msg.c_str());
     
     gtk_widget_set_sensitive(close_button, TRUE);
 }
@@ -114,64 +116,70 @@ void on_install_clicked(GtkWidget *widget, gpointer data) {
 }
 
 void on_close_clicked(GtkWidget *widget, gpointer data) {
-    gtk_main_quit();
+    GtkWindow *win = GTK_WINDOW(data);
+    gtk_window_destroy(win);
 }
 
-int main(int argc, char *argv[]) {
-    gtk_init(&argc, &argv);
-    
+static void activate(GtkApplication *app, gpointer user_data) {
     // Create window
-    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    window = gtk_application_window_new(app);
     gtk_window_set_title(GTK_WINDOW(window), "Yorl Compiler Installer");
     gtk_window_set_default_size(GTK_WINDOW(window), 500, 250);
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-    gtk_container_set_border_width(GTK_CONTAINER(window), 20);
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
     
     // Create vertical box
     GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
-    gtk_container_add(GTK_CONTAINER(window), vbox);
+    gtk_widget_set_margin_start(vbox, 20);
+    gtk_widget_set_margin_end(vbox, 20);
+    gtk_widget_set_margin_top(vbox, 20);
+    gtk_widget_set_margin_bottom(vbox, 20);
+    gtk_window_set_child(GTK_WINDOW(window), vbox);
     
     // Title
     GtkWidget *title = gtk_label_new(NULL);
     gtk_label_set_markup(GTK_LABEL(title), "<span size='x-large' weight='bold'>Yorl Compiler Installer</span>");
-    gtk_box_pack_start(GTK_BOX(vbox), title, FALSE, FALSE, 10);
+    gtk_box_append(GTK_BOX(vbox), title);
     
     // Version
     GtkWidget *version = gtk_label_new(("Version " + VERSION).c_str());
-    gtk_box_pack_start(GTK_BOX(vbox), version, FALSE, FALSE, 0);
+    gtk_box_append(GTK_BOX(vbox), version);
     
     // Description
     GtkWidget *desc = gtk_label_new("This will install the Yorl compiler (yolex) to ~/.local/bin");
-    gtk_box_pack_start(GTK_BOX(vbox), desc, FALSE, FALSE, 10);
+    gtk_box_append(GTK_BOX(vbox), desc);
     
     // Status label
     status_label = gtk_label_new("Ready to install");
-    gtk_box_pack_start(GTK_BOX(vbox), status_label, FALSE, FALSE, 5);
+    gtk_box_append(GTK_BOX(vbox), status_label);
     
     // Progress bar
     progress_bar = gtk_progress_bar_new();
-    gtk_box_pack_start(GTK_BOX(vbox), progress_bar, FALSE, FALSE, 5);
+    gtk_box_append(GTK_BOX(vbox), progress_bar);
     
     // Button box
     GtkWidget *button_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 10);
-    gtk_box_pack_start(GTK_BOX(vbox), button_box, FALSE, FALSE, 10);
+    gtk_widget_set_halign(button_box, GTK_ALIGN_CENTER);
+    gtk_box_append(GTK_BOX(vbox), button_box);
     
     // Install button
     install_button = gtk_button_new_with_label("Install");
     gtk_widget_set_size_request(install_button, 100, 40);
     g_signal_connect(install_button, "clicked", G_CALLBACK(on_install_clicked), NULL);
-    gtk_box_pack_start(GTK_BOX(button_box), install_button, TRUE, TRUE, 0);
+    gtk_box_append(GTK_BOX(button_box), install_button);
     
     // Close button
     close_button = gtk_button_new_with_label("Close");
     gtk_widget_set_size_request(close_button, 100, 40);
     gtk_widget_set_sensitive(close_button, FALSE);
-    g_signal_connect(close_button, "clicked", G_CALLBACK(on_close_clicked), NULL);
-    gtk_box_pack_start(GTK_BOX(button_box), close_button, TRUE, TRUE, 0);
+    g_signal_connect(close_button, "clicked", G_CALLBACK(on_close_clicked), window);
+    gtk_box_append(GTK_BOX(button_box), close_button);
     
-    gtk_widget_show_all(window);
-    gtk_main();
-    
-    return 0;
+    gtk_window_present(GTK_WINDOW(window));
+}
+
+int main(int argc, char *argv[]) {
+    GtkApplication *app = gtk_application_new("com.yorl.installer", G_APPLICATION_DEFAULT_FLAGS);
+    g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+    int status = g_application_run(G_APPLICATION(app), argc, argv);
+    g_object_unref(app);
+    return status;
 }
