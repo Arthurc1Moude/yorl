@@ -1,0 +1,119 @@
+^yorl-builtin 1.0.0\
+# Data Processing Built-ins
+# Data structures, manipulation, and I/O
+
+# Data Types
+type.data {
+  array: {elements:array, length:number, dtype:string},
+  dict: {keys:array, values:array, size:number},
+  dataframe: {columns:array, rows:number, dtypes:object},
+  series: {data:array, index:array, name:string}
+}
+
+# Data Functions
+function.data {
+  # Array operations
+  array.create: {size:number, fill:any} -> array,
+  array.push: {array:array, element:any} -> array,
+  array.pop: {array:array} -> any,
+  array.slice: {array:array, start:number, end:number} -> array,
+  array.map: {array:array, func:function} -> array,
+  array.filter: {array:array, func:function} -> array,
+  array.reduce: {array:array, func:function, initial:any} -> any,
+  array.sort: {array:array, reverse:boolean} -> array,
+  array.unique: {array:array} -> array,
+  array.flatten: {array:array} -> array,
+  
+  # Dictionary operations
+  dict.create: {keys:array, values:array} -> dict,
+  dict.get: {dict:dict, key:string, default:any} -> any,
+  dict.set: {dict:dict, key:string, value:any} -> dict,
+  dict.keys: {dict:dict} -> array,
+  dict.values: {dict:dict} -> array,
+  dict.merge: {dict1:dict, dict2:dict} -> dict,
+  
+  # DataFrame operations
+  df.read_csv: {path:string, delimiter:string} -> dataframe,
+  df.read_json: {path:string} -> dataframe,
+  df.write_csv: {df:dataframe, path:string} -> boolean,
+  df.write_json: {df:dataframe, path:string} -> boolean,
+  df.select: {df:dataframe, columns:array} -> dataframe,
+  df.filter: {df:dataframe, condition:function} -> dataframe,
+  df.groupby: {df:dataframe, columns:array} -> dataframe,
+  df.sort: {df:dataframe, column:string, ascending:boolean} -> dataframe,
+  df.join: {df1:dataframe, df2:dataframe, on:string} -> dataframe,
+  
+  # Statistical functions
+  stats.mean: {data:array} -> number,
+  stats.median: {data:array} -> number,
+  stats.mode: {data:array} -> any,
+  stats.std: {data:array} -> number,
+  stats.var: {data:array} -> number,
+  stats.min: {data:array} -> number,
+  stats.max: {data:array} -> number,
+  stats.sum: {data:array} -> number,
+  stats.count: {data:array} -> number
+}
+
+# Data Config Blocks
+config.data {
+  .source: {
+    type: string,
+    path: string,
+    format: string,
+    encoding: string,
+    delimiter: string
+  },
+  
+  .transform: {
+    operations: array,
+    filters: array,
+    aggregations: array,
+    joins: array
+  },
+  
+  .output: {
+    format: string,
+    path: string,
+    compression: string,
+    encoding: string
+  },
+  
+  .schema: {
+    columns: array,
+    types: object,
+    nullable: object,
+    defaults: object
+  }
+}
+
+# Data Constants
+constants.data {
+  # Data types
+  DTYPE.INT: 'int',
+  DTYPE.FLOAT: 'float',
+  DTYPE.STRING: 'string',
+  DTYPE.BOOLEAN: 'boolean',
+  DTYPE.DATE: 'date',
+  DTYPE.DATETIME: 'datetime',
+  
+  # File formats
+  FORMAT.CSV: 'csv',
+  FORMAT.JSON: 'json',
+  FORMAT.XML: 'xml',
+  FORMAT.PARQUET: 'parquet',
+  FORMAT.AVRO: 'avro',
+  
+  # Encodings
+  ENCODING.UTF8: 'utf-8',
+  ENCODING.ASCII: 'ascii',
+  ENCODING.LATIN1: 'latin-1',
+  
+  # Delimiters
+  DELIMITER.COMMA: ',',
+  DELIMITER.TAB: '\t',
+  DELIMITER.PIPE: '|',
+  DELIMITER.SEMICOLON: ';'
+}
+
+^END_OF_BUILTIN

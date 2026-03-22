@@ -1,0 +1,37 @@
+{
+  "name": "yorl-language",
+  "displayName": "Yorl Language Support",
+  "description": "Syntax highlighting and language support for Yorl programming language",
+  "version": "1.0.0",
+  "publisher": "yorl",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "yorl",
+        "aliases": [
+          "Yorl",
+          "yorl"
+        ],
+        "extensions": [
+          ".yorl",
+          ".yol",
+          ".ybuiltin"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "yorl",
+        "scopeName": "source.yorl",
+        "path": "./yorl.tmLanguage.json"
+      }
+    ]
+  }
+}
