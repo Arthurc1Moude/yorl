@@ -61,6 +61,19 @@ code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
 
 ## Quick Start
 
+### Download Pre-compiled Binary (Recommended)
+
+No build tools required! Download the pre-compiled binary:
+
+```bash
+# Download for Linux x64
+wget https://github.com/Arthurc1Moude/yorl/releases/download/v1.0.0/yolex-linux-x64
+chmod +x yolex-linux-x64
+./yolex-linux-x64 file.yorl
+```
+
+Or visit the [Releases page](https://github.com/Arthurc1Moude/yorl/releases) to download.
+
 ### Installation
 
 ```bash
