@@ -1,9 +1,9 @@
 {
-  "name": "@arthurc1moude/yorl-language",
+  "name": "yorl-language",
   "displayName": "Yorl Language Support",
   "description": "Syntax highlighting and language support for Yorl programming language",
   "version": "1.0.0",
-  "publisher": "Arthurc1Moude",
+  "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
   "license": "MIT",
   "repository": {
