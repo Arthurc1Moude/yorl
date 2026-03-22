@@ -61,6 +61,31 @@ code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
 
 ## Quick Start
 
+### Download Yorl SDK (Recommended)
+
+Download the complete SDK like Swift:
+
+```bash
+# Download SDK
+wget https://github.com/Arthurc1Moude/yorl/releases/download/v1.0.0/yorl-sdk-1.0.0-linux-x64.tar.gz
+
+# Extract
+tar -xzf yorl-sdk-1.0.0-linux-x64.tar.gz
+
+# Install
+cd yorl-sdk
+./install.sh
+
+# Verify
+yolex --version
+```
+
+The SDK includes:
+- ✅ Yorl compiler (yolex)
+- ✅ Standard library (builtin modules)
+- ✅ Documentation
+- ✅ Auto-configuration for your shell
+
 ### Easy Installation (One Command)
 
 Install yolex globally with one command:
