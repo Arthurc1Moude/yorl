@@ -1,5 +1,9 @@
 # Yorl Programming Language
 
+<p align="center">
+  <img src="icon-otm.png" alt="Yorl Logo" width="128" height="128">
+</p>
+
 [![GitHub release](https://img.shields.io/github/v/release/Arthurc1Moude/yorl?style=flat&color=ff00ff&labelColor=0d1117&logo=github&logoColor=ff00ff)](https://github.com/Arthurc1Moude/yorl/releases)
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/Arthurc1Moude/yorl?style=flat&color=00ffff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00ff00?style=flat&labelColor=0d1117)](https://opensource.org/licenses/MIT)
