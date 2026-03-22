@@ -3,12 +3,32 @@
   "displayName": "Yorl Language Support",
   "description": "Syntax highlighting and language support for Yorl programming language",
   "version": "1.0.0",
-  "publisher": "yorl",
+  "publisher": "Arthurc1Moude",
+  "author": "Arthurc1Moude",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arthurc1Moude/yorl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Arthurc1Moude/yorl/issues"
+  },
+  "homepage": "https://github.com/Arthurc1Moude/yorl#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
     "Programming Languages"
+  ],
+  "keywords": [
+    "yorl",
+    "syntax",
+    "highlighting",
+    "language",
+    "configuration"
   ],
   "contributes": {
     "languages": [

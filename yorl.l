@@ -94,9 +94,12 @@ NEWLINE     \n
                           return CALL; 
                         }
 
-    /* Object literals */
+    /* Object literals - process /em+ inside {} */
 "{"[^}]*"}"             { 
-                          yylval.str = strndup(yytext + 1, yyleng - 2);
+                          char* content = strndup(yytext + 1, yyleng - 2);
+                          /* Process exception marks in object content */
+                          yylval.str = process_exception_marks(content);
+                          free(content);
                           return OBJECT; 
                         }
 
@@ -110,12 +113,9 @@ NEWLINE     \n
                           return STRING; 
                         }
 
-    /* Parenthesized expressions - may contain exception marks */
+    /* Parenthesized expressions - NO /em+ processing (new rule) */
 "("[^)]*")"             { 
-                          char* content = strndup(yytext + 1, yyleng - 2);
-                          /* Process exception marks in content */
-                          yylval.str = process_exception_marks(content);
-                          free(content);
+                          yylval.str = strndup(yytext + 1, yyleng - 2);
                           return PAREN_EXPR; 
                         }
 

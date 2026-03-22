@@ -1,0 +1,51 @@
+# VS Code Extension ignore file
+.vscode/**
+.vscode-test/**
+.gitignore
+.git/**
+
+# Build artifacts
+*.o
+*.a
+*.so
+yolex
+lex.yy.c
+yorl.tab.c
+yorl.tab.h
+
+# Source files (not needed in extension)
+yorl.l
+yorl.y
+yorl_json.c
+yorl_json.h
+version.c
+version.h
+Makefile
+
+# Example files (optional - include if you want)
+# *.yorl
+# *.yol
+
+# Built-in files (keep these)
+# builtin/**
+
+# Documentation (keep README)
+# README.md
+
+# Test files
+test-*
+
+# Node modules
+node_modules/**
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~

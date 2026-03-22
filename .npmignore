@@ -1,0 +1,40 @@
+# NPM ignore file
+.vscode/**
+.vscode-test/**
+.git/**
+.gitignore
+
+# Build artifacts
+*.o
+*.a
+*.so
+yolex
+lex.yy.c
+yorl.tab.c
+yorl.tab.h
+
+# Test files
+test-*
+*.test.js
+
+# Example files (include in npm package)
+# Keep .yorl and .yol files
+
+# Documentation
+# Keep README.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# VS Code specific
+.vscodeignore
