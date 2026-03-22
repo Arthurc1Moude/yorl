@@ -19,7 +19,20 @@ void yyerror(const char *s);
 char* strip_quotes(char* str);
 char* process_exception_marks(char* str);
 char* strdup(const char *s);
-char* strndup(const char *s, size_t n);
+
+/* Windows compatibility for strndup */
+#ifndef strndup
+char* strndup(const char *s, size_t n) {
+    size_t len = strlen(s);
+    if (n < len) len = n;
+    char *result = (char*)malloc(len + 1);
+    if (result) {
+        memcpy(result, s, len);
+        result[len] = '\0';
+    }
+    return result;
+}
+#endif
 %}
 
 %option noyywrap
