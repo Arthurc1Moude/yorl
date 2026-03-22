@@ -1,22 +1,21 @@
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="orangeYellowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ff6600;stop-opacity:1" />
       <stop offset="50%" style="stop-color:#ff9900;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- Main Y shape in VS Code style -->
-  <path d="M 95 15 L 95 35 L 73 64 L 73 113 L 55 113 L 55 64 L 33 35 L 33 15 L 48 15 L 64 42 L 80 15 Z" 
-        fill="url(#orangeYellowGradient)"/>
+  <!-- Y Letter -->
+  <polygon points="30,20 45,20 64,50 83,20 98,20 98,35 73,70 73,108 55,108 55,70 30,35" 
+           fill="url(#grad)"/>
   
-  <!-- Lightning bolt accent underneath -->
-  <path d="M 40 100 L 50 100 L 45 108 L 60 108 L 55 116 L 73 116 L 68 108 L 83 108 L 78 100 L 88 100" 
-        fill="none"
-        stroke="url(#orangeYellowGradient)" 
-        stroke-width="3" 
-        stroke-linecap="round"
-        stroke-linejoin="round"/>
-</svg>
+  <!-- Lightning bolt line -->
+  <polyline points="35,95 48,95 43,103 58,103 53,111 73,111 68,103 83,103 78,95 93,95" 
+            fill="none"
+            stroke="url(#grad)" 
+            stroke-width="4" 
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
 </svg>
