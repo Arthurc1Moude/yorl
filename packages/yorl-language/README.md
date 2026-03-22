@@ -9,6 +9,8 @@
 
 This package provides VS Code extension support for the Yorl programming language, including syntax highlighting, language configuration, and example files.
 
+**Includes pre-compiled yolex compiler** - No build tools required!
+
 A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
 
 ## Table of Contents
