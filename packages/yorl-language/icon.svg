@@ -1,11 +1,27 @@
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
   <!-- Lowercase y drawn with straight lines -->
-  <!-- Left vertical line -->
-  <rect x="35" y="35" width="15" height="50" fill="#6b6b6b"/>
+  <!-- Left vertical line - neon yellow -->
+  <rect x="35" y="35" width="15" height="50" fill="#ffff00" filter="url(#glow)"/>
   
-  <!-- Right diagonal line going down -->
-  <polygon points="78,35 93,35 70,100 55,100" fill="#6b6b6b"/>
+  <!-- Right diagonal line going down - neon red-pink -->
+  <polygon points="78,35 93,35 70,100 55,100" fill="#ff0080" filter="url(#glow)"/>
   
-  <!-- Top horizontal connecting piece -->
-  <rect x="50" y="35" width="28" height="15" fill="#6b6b6b"/>
+  <!-- Top horizontal connecting piece - gradient between the two colors -->
+  <defs>
+    <linearGradient id="connectGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffff00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff0080;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="50" y="35" width="28" height="15" fill="url(#connectGrad)" filter="url(#glow)"/>
 </svg>
