@@ -36,7 +36,7 @@ packages/*/.npmrc
 *.tgz
 packages/*/*.tgz
 
-# VSIX packages (keep the built ones, ignore temp)
+# VSIX packages
 *.vsix.tmp
 *.vsix
 
@@ -85,22 +85,6 @@ npm-debug.log*
 .env.test
 .env.production
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
 # Build output
 build/
 dist/
@@ -112,25 +96,11 @@ node_modules/
 bower_components/
 jspm_packages/
 
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# Dependency directories
-node_modules/
-jspm_packages/
 
 # Optional npm cache directory
 .npm
@@ -172,3 +142,6 @@ public
 
 # DynamoDB Local files
 .dynamodb/
+
+# Test yorl files
+test-*.yorl
