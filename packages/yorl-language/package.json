@@ -2,10 +2,10 @@
   "name": "yorl-language",
   "displayName": "Yorl",
   "description": "Syntax highlighting and language support for Yorl programming language",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "icon": "icon.png",
   "repository": {
     "type": "git",
