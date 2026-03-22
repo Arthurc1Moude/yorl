@@ -176,12 +176,14 @@ NEWLINE     \n
 ":"                     { return COLON; }
 "\\"                    { return BACKSLASH; }
 
-    /* Indentation - count spaces at start of line, but not for blank lines */
-^{WHITESPACE}+{NEWLINE} { 
+    /* Blank lines - ignore completely */
+^{WHITESPACE}*{NEWLINE} { 
                           line_num++;
                           col_num = 1;
-                          return NEWLINE;
+                          /* Don't return NEWLINE for blank lines */
                         }
+
+    /* Indentation - count spaces at start of line */
 ^{WHITESPACE}+          { 
                           yylval.ival = yyleng;
                           return INDENT; 
