@@ -2,28 +2,21 @@
   <defs>
     <linearGradient id="orangeYellowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ff6600;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff9900;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
   
-  <!-- X shape with gradient -->
-  <path d="M 30 25 L 64 64 L 98 25 L 108 35 L 74 74 L 108 113 L 98 123 L 64 84 L 30 123 L 20 113 L 54 74 L 20 35 Z" 
-        fill="url(#orangeYellowGradient)" 
-        filter="url(#glow)"/>
+  <!-- Main Y shape in VS Code style -->
+  <path d="M 95 15 L 95 35 L 73 64 L 73 113 L 55 113 L 55 64 L 33 35 L 33 15 L 48 15 L 64 42 L 80 15 Z" 
+        fill="url(#orangeYellowGradient)"/>
   
-  <!-- Lightning bolt line underneath -->
-  <path d="M 25 95 L 40 95 L 35 105 L 55 105 L 50 115 L 78 115 L 73 105 L 93 105 L 88 95 L 103 95" 
+  <!-- Lightning bolt accent underneath -->
+  <path d="M 40 100 L 50 100 L 45 108 L 60 108 L 55 116 L 73 116 L 68 108 L 83 108 L 78 100 L 88 100" 
         fill="none"
         stroke="url(#orangeYellowGradient)" 
-        stroke-width="4" 
+        stroke-width="3" 
         stroke-linecap="round"
-        stroke-linejoin="round"
-        filter="url(#glow)"/>
+        stroke-linejoin="round"/>
+</svg>
 </svg>
