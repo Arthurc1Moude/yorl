@@ -90,3 +90,32 @@ void generate_json(FILE* fp, ASTNode* root) {
     ast_to_json(fp, root, 0);
     fprintf(fp, "\n");
 }
+
+/* Global buffer for JSON output */
+static char* json_output_buffer = NULL;
+static size_t json_buffer_size = 0;
+static size_t json_buffer_pos = 0;
+
+void json_buffer_append(const char* str) {
+    size_t len = strlen(str);
+    if (json_buffer_pos + len + 1 > json_buffer_size) {
+        json_buffer_size = (json_buffer_size == 0) ? 4096 : json_buffer_size * 2;
+        json_output_buffer = realloc(json_output_buffer, json_buffer_size);
+    }
+    strcpy(json_output_buffer + json_buffer_pos, str);
+    json_buffer_pos += len;
+}
+
+char* get_json_output(void) {
+    if (!json_output_buffer) return strdup("{}");
+    return strdup(json_output_buffer);
+}
+
+void reset_json_buffer(void) {
+    if (json_output_buffer) {
+        free(json_output_buffer);
+        json_output_buffer = NULL;
+    }
+    json_buffer_size = 0;
+    json_buffer_pos = 0;
+}

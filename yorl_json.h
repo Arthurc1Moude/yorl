@@ -25,3 +25,8 @@ void ast_to_json(FILE* fp, ASTNode* node, int indent);
 void generate_json(FILE* fp, ASTNode* root);
 
 #endif /* YORL_JSON_H */
+
+/* JSON buffer functions */
+void json_buffer_append(const char* str);
+char* get_json_output(void);
+void reset_json_buffer(void);

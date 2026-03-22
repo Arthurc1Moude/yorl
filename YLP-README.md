@@ -4,7 +4,7 @@ Package Yorl programs as standalone executables for multiple platforms.
 
 ## Installation
 
-Download the ylp binary for your platform from the [releases page](https://github.com/Arthurc1Moude/yorl/releases).
+Download ylp for your platform:
 
 ### Linux
 ```bash
@@ -14,42 +14,41 @@ sudo mv ylp-linux-x64 /usr/local/bin/ylp
 ```
 
 ### Windows
-Download `ylp-windows-x64.exe` and add to your PATH.
+Download `ylp-windows-x64.exe` and add to PATH, or rename to `ylp.exe`.
 
 ## Usage
 
-### Basic Usage
+### Basic Packaging
 ```bash
 ylp myapp.yorl -o myapp
 ```
 
-### Multi-Platform Build
+### Multi-Platform
 ```bash
 ylp myapp.yorl -o myapp -p all
 ```
 
-This creates:
+Creates:
 - `myapp` (Linux)
+- `myapp.exe` (Windows)
 - `myapp-macos` (macOS)
-- `myapp.exe` (Windows, if MinGW is available)
 
-### Platform-Specific Build
+### GUI Applications
 ```bash
-ylp myapp.yorl -o myapp -p linux
-ylp myapp.yorl -o myapp -p windows
-ylp myapp.yorl -o myapp -p macos
+ylp whiteboard.yorl -o gui-app --gui
 ```
+
+Enables GUI rendering for whiteboard class applications.
 
 ## Options
 
-- `-o <output>` - Output executable name (required)
-- `-p <platform>` - Target platform: `linux`, `windows`, `macos`, `all`, `current` (default: current)
+- `-o <output>` - Output name (required)
+- `-p <platform>` - Target: `linux`, `windows`, `macos`, `all` (default: linux)
+- `-g, --gui` - Enable GUI for whiteboard class
 - `--version` - Show version
 - `--help` - Show help
 
 ## Example
-
-Create a Yorl application:
 
 ```yorl
 ^yorl 1.0.0-2437\
@@ -57,36 +56,56 @@ Create a Yorl application:
 class -className=myApp -type=application;
   .config
     .config.name -(txt='My App');
-    .config.version -(txt='1.0.0');
   .data
     .data.message -(txt='Hello World!');
 
 ^END_OF_YORL
 ```
 
-Package it:
-
+Package:
 ```bash
 ylp myapp.yorl -o myapp
+./myapp
 ```
 
-Run it:
+## Whiteboard GUI Example
 
+```yorl
+^yorl 1.0.0-2437\
+
+class -className=board -type=whiteboard;
+  .canvas
+    .canvas.size -width=800 -height=600;
+    .canvas.background -color=#FFFFFF;
+  .content
+    .content.text -(txt='Hello GUI!');
+
+^END_OF_YORL
+```
+
+Package with GUI:
 ```bash
-./myapp
+ylp board.yorl -o board-app --gui
+./board-app
 ```
 
 ## How It Works
 
-1. Compiles `.yorl` source to JSON using `yolex`
-2. Embeds the JSON into a platform-specific executable wrapper
-3. Creates standalone executables that can run without Yorl installed
+ylp embeds your Yorl source code into platform-specific executables:
+- **Linux/macOS**: Bash script wrapper
+- **Windows**: C executable with embedded data
+- **GUI mode**: Uses GTK4 (Linux) or Win32 (Windows) for rendering
 
 ## Requirements
 
-- `yolex` compiler must be in PATH
-- For Windows cross-compilation: MinGW (`x86_64-w64-mingw32-gcc`)
+- No dependencies for basic packaging
+- For GUI on Linux: GTK4 (`libgtk-4-dev`)
+- For Windows cross-compile: MinGW (`x86_64-w64-mingw32-gcc`)
 
-## Output
+## Features
 
-The packaged executables contain the compiled Yorl program and can be distributed independently.
+- ✅ Standalone - no yolex required at runtime
+- ✅ Cross-platform packaging
+- ✅ GUI support for whiteboard class
+- ✅ Embeds Yorl source in executable
+- ✅ Small output size
