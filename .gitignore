@@ -8,6 +8,8 @@
 # Executables
 yolex
 yolex.exe
+ylp
+yorl-gui-renderer
 
 # Generated files
 lex.yy.c
@@ -17,35 +19,65 @@ yorl.tab.h
 *.tab.h
 
 # Build artifacts
-*.o
-*.a
-*.so
-*.dylib
-*.dll
+build/
+dist/
+out/
+target/
 
-# NPM packages (keep source, ignore node_modules)
+# Package files
+*.deb
+*.rpm
+*.AppImage
+*.snap
+*.flatpak
+
+# SDK packages
+*.tar.gz
+*.zip
+yorl-sdk-*/
+install-yolex
+
+# Platform binaries (keep source, ignore binaries)
+*-linux-x64
+*-windows-x64.exe
+*-macos
+
+# Test/example outputs
+myapp*
+testapp*
+whiteboard-app*
+whiteboard-gui*
+hello-app*
+simple-app*
+app-example*
+
+# Packaging build artifacts
+packaging/deb/yorl-installer_*/
+packaging/rpm/BUILD/
+packaging/rpm/BUILDROOT/
+packaging/rpm/RPMS/
+packaging/rpm/SOURCES/
+packaging/rpm/SRPMS/
+packaging/appimage/yorl-installer.AppDir/
+
+# NPM packages
 node_modules/
 packages/*/node_modules/
+*.tgz
+packages/*/*.tgz
+*.vsix.tmp
+*.vsix
 
-# NPM auth files (NEVER commit tokens!)
+# NPM auth files
 .npmrc
 packages/*/.npmrc
 */.npmrc
-
-# Package tarballs
-*.tgz
-packages/*/*.tgz
-
-# VSIX packages
-*.vsix.tmp
-*.vsix
 
 # Editor and IDE files
 .vscode/
 .idea/
 *.swp
 *~
-*.swp
 
 # OS generated files
 .DS_Store
@@ -74,10 +106,6 @@ test-*
 coverage/
 .nyc_output/
 
-# Node
-node_modules/
-npm-debug.log*
-
 # Environment files
 .env
 .env.local
@@ -85,75 +113,32 @@ npm-debug.log*
 .env.test
 .env.production
 
-# Build output
-build/
-dist/
-out/
-target/
-
-# Dependencies
-node_modules/
-bower_components/
-jspm_packages/
-
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# Optional npm cache directory
+# Optional npm cache
 .npm
 
 # Optional REPL history
 .node_repl_history
 
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
+# Yarn
 .yarn-integrity
-
-# dotenv environment variable files
-.env
-
-# next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-.nuxt/
-
-# Nuxt generate
-dist
-
-# Gatsby files
-.cache/
-public
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
 
 # Test yorl files
 test-*.yorl
 
-# Yorl files
+# Yorl files (except examples in builtin)
 *.yorl
 *.yol
 *.ybuiltin
 !builtin/*.ybuiltin
 !packages/yorl-language/builtin/*.ybuiltin
 
-# JavaScript files (but keep extension.js)
+# JavaScript files (except extension.js)
 *.js
 !packages/yorl-language/extension.js
 
@@ -164,22 +149,8 @@ test-*.yorl
 Makefile
 *.mk
 
-# Icons
+# Icons (except official)
 *.png
 *.svg
 !icon-otm.png
 !icon-otm.svg
-*.mk
-
-# Package files
-*.deb
-*.rpm
-*.AppImage
-*.snap
-*.flatpak
-
-# SDK packages
-*.tar.gz
-*.zip
-yorl-sdk-*/
-install-yolex
