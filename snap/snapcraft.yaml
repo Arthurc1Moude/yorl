@@ -1,0 +1,31 @@
+name: yorl-installer
+version: '1.0.0'
+summary: Yorl Compiler Installer
+description: |
+  GUI installer for the Yorl programming language compiler.
+  Downloads and installs yolex compiler to ~/.local/bin
+
+base: core22
+confinement: strict
+grade: stable
+
+apps:
+  yorl-installer:
+    command: usr/bin/install-yolex-gui
+    plugs:
+      - desktop
+      - desktop-legacy
+      - wayland
+      - x11
+      - network
+      - home
+
+parts:
+  yorl-installer:
+    plugin: dump
+    source: .
+    organize:
+      install-yolex-gui: usr/bin/install-yolex-gui
+    stage-packages:
+      - libgtk-4-1
+      - curl

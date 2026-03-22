@@ -1,0 +1,10 @@
+Package: yorl-installer
+Version: 1.0.0
+Section: devel
+Priority: optional
+Architecture: amd64
+Depends: libgtk-4-1, curl
+Maintainer: Arthurc1Moude <arthurc1moude@example.com>
+Description: Yorl Compiler Installer
+ GUI installer for the Yorl programming language compiler.
+ Downloads and installs yolex compiler to ~/.local/bin

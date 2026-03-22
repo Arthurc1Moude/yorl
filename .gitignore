@@ -170,3 +170,16 @@ Makefile
 !icon-otm.png
 !icon-otm.svg
 *.mk
+
+# Package files
+*.deb
+*.rpm
+*.AppImage
+*.snap
+*.flatpak
+
+# SDK packages
+*.tar.gz
+*.zip
+yorl-sdk-*/
+install-yolex
