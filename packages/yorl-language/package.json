@@ -2,7 +2,7 @@
   "name": "yorl-language",
   "displayName": "Yorl Programming Language",
   "description": "Syntax highlighting and language support for Yorl programming language",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
   "license": "MIT",
@@ -51,6 +51,15 @@
         "scopeName": "source.yorl",
         "path": "./yorl.tmLanguage.json"
       }
-    ]
+    ],
+    "icons": {
+      "yorl-icon": {
+        "description": "Yorl file icon",
+        "default": {
+          "fontPath": "./file-icon.png",
+          "fontCharacter": "Y"
+        }
+      }
+    }
   }
 }
