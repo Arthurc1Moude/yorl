@@ -1,0 +1,14 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="128" height="128" fill="#ffffff"/>
+  
+  <!-- Lowercase y drawn with straight lines in grey -->
+  <!-- Left vertical line - grey -->
+  <rect x="35" y="35" width="15" height="50" fill="#6b6b6b"/>
+  
+  <!-- Right diagonal line going down - grey -->
+  <polygon points="78,35 93,35 70,100 55,100" fill="#6b6b6b"/>
+  
+  <!-- Top horizontal connecting piece - grey -->
+  <rect x="50" y="35" width="28" height="15" fill="#6b6b6b"/>
+</svg>

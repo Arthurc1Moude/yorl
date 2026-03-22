@@ -2,7 +2,7 @@
   "name": "yorl-language",
   "displayName": "Yorl Programming Language",
   "description": "Syntax highlighting and language support for Yorl programming language",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
   "license": "MIT",
@@ -40,7 +40,7 @@
         "extensions": [".yorl", ".yol", ".ybuiltin"],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./file-icon.png",
+          "light": "./file-icon-ofm.png",
           "dark": "./file-icon.png"
         }
       }
