@@ -55,6 +55,8 @@ code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
 npm install @arthurc1moude/yorl-compiler
 ```
 
+> **Note**: Source code is available in the `packages/` directory. The compiler package contains the lexer, parser, and build system.
+
 ## Features
 
 - **Simple Syntax**: Clean, readable syntax with Python-like indentation
@@ -211,6 +213,9 @@ export class.{imageProcessor} -as[png] -to(dir='@path{/output}');
 ## Building and Installation
 
 ### Prerequisites
+
+**Note**: Source code is located in `packages/yorl-compiler/` directory.
+
 ```bash
 # Ubuntu/Debian
 sudo apt-get install flex bison gcc make
@@ -218,15 +223,24 @@ sudo apt-get install flex bison gcc make
 # macOS
 brew install flex bison
 
-# Build
+# Build from packages directory
+cd packages/yorl-compiler
 make
 ```
 
 ### C Implementation (Production)
 ```bash
-make              # Build yolex
-./yolex file.yorl  # Parse a Yorl file
-./yolex --json file.yorl  # Output JSON
+# Navigate to compiler package
+cd packages/yorl-compiler
+
+# Build yolex
+make
+
+# Run
+./yolex file.yorl
+
+# Output JSON
+./yolex --json file.yorl
 ```
 
 ### Python Implementation (Development)
