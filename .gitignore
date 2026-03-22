@@ -23,6 +23,22 @@ yorl.tab.h
 *.dylib
 *.dll
 
+# NPM packages (keep source, ignore node_modules)
+node_modules/
+packages/*/node_modules/
+
+# NPM auth files (NEVER commit tokens!)
+.npmrc
+packages/*/.npmrc
+*/.npmrc
+
+# Package tarballs
+*.tgz
+packages/*/*.tgz
+
+# VSIX packages (keep the built ones, ignore temp)
+*.vsix.tmp
+
 # Editor and IDE files
 .vscode/
 .idea/

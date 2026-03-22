@@ -1,9 +1,17 @@
 # Yorl Programming Language
 
+[![GitHub release](https://img.shields.io/github/v/release/Arthurc1Moude/yorl?style=flat-square)](https://github.com/Arthurc1Moude/yorl/releases)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/Arthurc1Moude/yorl?style=flat-square)](https://github.com/Arthurc1Moude/yorl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/Arthurc1Moude/yorl?style=flat-square)](https://github.com/Arthurc1Moude/yorl/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Arthurc1Moude/yorl?style=flat-square)](https://github.com/Arthurc1Moude/yorl/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Arthurc1Moude/yorl?style=flat-square)](https://github.com/Arthurc1Moude/yorl/network)
+
 A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
 
 ## Table of Contents
 - [Overview](#overview)
+- [Packages](#packages)
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Language Syntax](#language-syntax)
@@ -20,6 +28,32 @@ A simple configuration programming language (.yol/.yorl) for defining classes wi
 ## Overview
 
 Yorl is a configuration programming language designed for defining structured configurations with classes, functions, imports, and exports. It supports nested configurations, built-in types, and a comprehensive standard library.
+
+## Packages
+
+This repository contains two packages:
+
+### 📦 Language Support Package
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-27.1KB-green?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+
+**@arthurc1moude/yorl-language** - VS Code extension with syntax highlighting
+
+```bash
+npm install @arthurc1moude/yorl-language
+# Or install VSIX:
+code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
+```
+
+### 🔧 Compiler Package
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-11.1KB-green?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+
+**@arthurc1moude/yorl-compiler** - Compiler source code (Flex/Bison)
+
+```bash
+npm install @arthurc1moude/yorl-compiler
+```
 
 ## Features
 

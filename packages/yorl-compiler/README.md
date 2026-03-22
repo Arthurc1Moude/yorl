@@ -1,5 +1,14 @@
 # Yorl Programming Language
 
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-11.1KB-green?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Build Tool](https://img.shields.io/badge/Build-Flex%2FBison-orange?style=flat-square)](https://github.com/Arthurc1Moude/yorl)
+
+## Compiler Package
+
+This package contains the Yorl compiler source code, including the Flex lexer, Bison parser, and build system.
+
 A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
 
 ## Table of Contents

@@ -1,5 +1,14 @@
 # Yorl Programming Language
 
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![package size](https://img.shields.io/badge/size-27.1KB-green?style=flat-square)](https://github.com/Arthurc1Moude/yorl/packages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![VS Code Extension](https://img.shields.io/badge/VS%20Code-Extension-blue?style=flat-square&logo=visual-studio-code)](https://github.com/Arthurc1Moude/yorl)
+
+## Language Support Package
+
+This package provides VS Code extension support for the Yorl programming language, including syntax highlighting, language configuration, and example files.
+
 A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
 
 ## Table of Contents
