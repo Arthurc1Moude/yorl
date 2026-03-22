@@ -1,87 +1,72 @@
 ^yorl 1.0.0-2437\
-! Exception Marks Example
-! Demonstrates /em+N for escaping special characters in strings
+! Exception Marks Example - NEW RULE
+! Demonstrates /em+N for escaping special characters ONLY inside {} objects/arrays
 
 ! Import dependencies
 import @path{/home/user/libs/textlib} -as[text];
 
 class -className=textProcessor -type=board -@set.{board}.color=#FFFFFF;
-  ! Text with exclamation marks
+  ! Regular strings - NO /em+ needed
   .alerts
-    .alerts.config -size=50 -(txt='Warning/em+1 Critical Alert/em+1');
-    ! /em+1 = ! (exclamation mark)
+    .alerts.config -size=50 -(txt='Warning! Critical Alert!');
+    .alerts.config -(note='This is a regular string with ! and @ and #');
   
-  ! Email addresses
+  ! Email addresses in regular strings - NO /em+ needed
   .contact
-    .contact.config -(email='support/em+2example.com');
-    .contact.config -(backup='admin/em+2company.org');
-    ! /em+2 = @ (at sign)
+    .contact.config -(email='support@example.com');
+    .contact.config -(backup='admin@company.org');
   
-  ! Social media tags
+  ! Social media tags in regular strings - NO /em+ needed
   .social
-    .social.config -(tag='/em+3trending /em+3viral /em+3yorl');
-    .social.config -(hashtag='/em+3programming');
-    ! /em+3 = # (hash/pound)
+    .social.config -(tag='#trending #viral #yorl');
+    .social.config -(hashtag='#programming');
   
-  ! Pricing information
+  ! Pricing in regular strings - NO /em+ needed
   .pricing
-    .pricing.config -(price='/em+499.99');
-    .pricing.config -(discount='/em+420 off');
-    ! /em+4 = $ (dollar sign)
+    .pricing.config -(price='$99.99');
+    .pricing.config -(discount='$20 off');
   
-  ! Percentages
+  ! Percentages in regular strings - NO /em+ needed
   .stats
-    .stats.config -(completion='95/em+5 complete');
-    .stats.config -(discount='Save 20/em+5 today');
-    ! /em+5 = % (percent)
+    .stats.config -(completion='95% complete');
+    .stats.config -(discount='Save 20% today');
   
-  ! Mathematical expressions
-  .math
-    .math.config -(formula='x/em+6y = z');
-    .math.config -(power='2/em+610 = 1024');
-    ! /em+6 = ^ (caret/power)
+  ! NOW: Using /em+ INSIDE {} objects
+  .objectExamples
+    .objectExamples.config -(data={
+      alert:'Warning/em+1 Critical/em+1',  ! Inside {} - use /em+1 for !
+      email:'support/em+2example.com',     ! Inside {} - use /em+2 for @
+      tag:'/em+3trending /em+3viral',      ! Inside {} - use /em+3 for #
+      price:'/em+499.99',                  ! Inside {} - use /em+4 for $
+      percent:'50/em+5',                   ! Inside {} - use /em+5 for %
+      power:'x/em+6y',                     ! Inside {} - use /em+6 for ^
+      logic:'A /em+7 B',                   ! Inside {} - use /em+7 for &
+      wildcard:'/em+8.txt',                ! Inside {} - use /em+8 for *
+      func:'myFunc/em+9arg/em+10'          ! Inside {} - use /em+9 for (, /em+10 for )
+    });
   
-  ! Logical operators
-  .logic
-    .logic.config -(and='A /em+7 B');
-    .logic.config -(condition='true /em+7 false');
-    ! /em+7 = & (ampersand)
-  
-  ! Wildcards
-  .patterns
-    .patterns.config -(glob='/em+8.txt');
-    .patterns.config -(regex='a/em+8b/em+8');
-    ! /em+8 = * (asterisk)
-  
-  ! Function calls
-  .functions
-    .functions.config -(call='myFunc/em+9arg1, arg2/em+10');
-    .functions.config -(expr='/em+9x + y/em+10 /em+8 2');
-    ! /em+9 = ( (left paren), /em+10 = ) (right paren)
-  
-  ! Complex example - multiple exception marks
-  .complex
-    .complex.config -(text='Alert/em+1 Email: user/em+2domain.com /em+#trending Price: /em+499.99 /em+950/em+5 off/em+1');
-    ! Multiple exception marks in one string
+  ! Array example with /em+ inside {}
+  .arrayExamples
+    .arrayExamples.config -(items=[
+      'Item 1/em+1',    ! Inside array {} - use /em+1
+      'user/em+2domain',! Inside array {} - use /em+2
+      '/em+3tag'        ! Inside array {} - use /em+3
+    ]);
 
-! Function to process text with special characters
-function -name=processText -params={input:string,output:string};
-  ! Load text
-  @call.{text.load} -path='@path{/input/text.txt}';
+! Function with object parameter
+function -name=processData -params={config:{alerts:string,email:string}};
+  ! Config is an object {} - use /em+ inside it
+  @set.{function}.config={alerts:'Warning/em+1', email:'admin/em+2site.com'};
   
-  ! Replace exception marks with actual characters
-  @call.{text.replace} -pattern='/em+1' -replacement='!';
-  @call.{text.replace} -pattern='/em+2' -replacement='@';
-  @call.{text.replace} -pattern='/em+3' -replacement='#';
-  
-  ! Save processed text
-  @call.{text.save} -path='@path{/output/processed.txt}';
+  ! Process the data
+  @call.{text.process} -config={input:'data/em+1', output:'result/em+1'};
 
 ! Export configuration
 export class.{textProcessor} -as[text] -to(dir='@path{/output}');
 
-! Comments don't need exception marks
-! Use ! directly for comments
-! This is much simpler than /em+1
+! Summary:
+! - Regular strings: 'text with ! @ # $ %' - NO /em+ needed
+! - Inside {} objects/arrays: {key:'value/em+1'} - USE /em+ for special chars
+! - Comments: ! comment - just use ! directly
 
 ^END_OF_YORL @type=config.exception-marks

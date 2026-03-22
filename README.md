@@ -73,15 +73,16 @@ export class.{myBoard} -as[png] -to(dir='@path{/output}');
 ### Comments and Exception Marks
 ```yorl
 ! This is a comment
-! Use /em+N to escape special characters in strings
--(txt='Hello/em+1 World/em+1')  ! Results in "Hello! World!"
+! Use /em+N to escape special characters inside {} objects/arrays
+-(txt='Welcome!')  ! Regular string - no escaping needed
+-(data={text:'Hello/em+1 World/em+1'})  ! Inside {} - use /em+1 for !
 ```
 
 ### Data Types
 - **Numbers**: `50`, `100`, `3.14`
-- **Strings**: `'text'` or `"text"`
+- **Strings**: `'text'` or `"text"` (no `/em+` escaping needed)
 - **Colors**: `#FFFFFF`, `#FF0000`
-- **Objects**: `{key:value, nested:{key:value}}`
+- **Objects**: `{key:value, nested:{key:value}}` (use `/em+` inside `{}` for special characters)
 - **URLs**: `@url{https://example.com}`
 - **Paths**: `@path{/absolute/path}`
 - **Dependencies**: `@dep{dependencyName}`

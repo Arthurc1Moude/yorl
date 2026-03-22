@@ -10,7 +10,7 @@ class -className=myBoard -type=board -@set.{board}.color=#FFFFFF;
   ! Header section
   .header
     ! Configure header with size and text
-    .header.config -size=100 -(txt='Hello World/em+1');  ! /em+1 = literal !
+    .header.config -size=100 -(txt='Hello World!');  ! Regular string, no /em+ needed
     .header.style -font={family:'Arial',size:24};
   
   ! Content section with image
