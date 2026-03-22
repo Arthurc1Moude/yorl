@@ -145,3 +145,9 @@ public
 
 # Test yorl files
 test-*.yorl
+
+# Build scripts and makefiles
+Makefile
+*.mk
+*.sh
+!install.sh
