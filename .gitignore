@@ -146,7 +146,7 @@ public
 # Test yorl files
 test-*.yorl
 
-# Yorl files (but keep .y, .l, .c source files)
+# Yorl files (but keep .y, .l, .c source files and builtins)
 *.yorl
 *.yol
 *.ybuiltin
@@ -157,8 +157,10 @@ test-*.yorl
 *.js
 !packages/yorl-language/extension.js
 
+# Shell scripts (but keep install.sh)
+*.sh
+!install.sh
+
 # Build scripts and makefiles
 Makefile
 *.mk
-*.sh
-!install.sh
