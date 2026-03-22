@@ -61,9 +61,19 @@ code --install-extension packages/yorl-language/yorl-language-1.0.0.vsix
 
 ## Quick Start
 
-### Download Yorl SDK (Recommended)
+### 🌍 Universal Installation (All Platforms)
 
-Download the complete SDK like Swift:
+**VS Code Extension** - Works on Windows, macOS, Linux, and Web:
+
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X / Cmd+Shift+X)
+3. Search for "Yorl"
+4. Click Install
+5. Start coding! `yolex` command automatically available
+
+### 🐧 Linux (SDK Installation)
+
+Download the complete SDK:
 
 ```bash
 # Download SDK
@@ -78,6 +88,21 @@ cd yorl-sdk
 
 # Verify
 yolex --version
+```
+
+### 🍎 macOS / 🪟 Windows
+
+**Option 1:** Install VS Code Extension (recommended)
+
+**Option 2:** Build from source:
+```bash
+# Install prerequisites
+# macOS: brew install flex bison
+# Windows: Install via MSYS2 or WSL
+
+git clone https://github.com/Arthurc1Moude/yorl.git
+cd yorl
+make
 ```
 
 The SDK includes:
