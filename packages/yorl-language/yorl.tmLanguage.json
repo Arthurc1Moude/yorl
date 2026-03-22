@@ -1,0 +1,188 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Yorl",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#colors"
+    },
+    {
+      "include": "#special-syntax"
+    },
+    {
+      "include": "#properties"
+    },
+    {
+      "include": "#identifiers"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.exclamation.yorl",
+          "match": "!.*$",
+          "captures": {
+            "0": {
+              "name": "comment.line.yorl"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.yorl",
+          "match": "\\b(class|import|function|export)\\b"
+        },
+        {
+          "name": "keyword.other.yorl",
+          "match": "\\^(yorl|END_OF_YORL|yorl-builtin|END_OF_BUILTIN)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.yorl",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.yorl",
+              "match": "/em\\+[0-9]+"
+            },
+            {
+              "name": "constant.character.escape.yorl",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.yorl",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.yorl",
+              "match": "/em\\+[0-9]+"
+            },
+            {
+              "name": "constant.character.escape.yorl",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.yorl",
+          "match": "\\b[0-9]+\\.[0-9]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.yorl",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+    "colors": {
+      "patterns": [
+        {
+          "name": "constant.other.color.yorl",
+          "match": "#[0-9a-fA-F]{6}\\b"
+        }
+      ]
+    },
+    "special-syntax": {
+      "patterns": [
+        {
+          "name": "support.function.url.yorl",
+          "match": "@url\\{[^}]*\\}"
+        },
+        {
+          "name": "support.function.path.yorl",
+          "match": "@path\\{[^}]*\\}"
+        },
+        {
+          "name": "support.function.dep.yorl",
+          "match": "@dep\\{[^}]*\\}"
+        },
+        {
+          "name": "support.function.set.yorl",
+          "match": "@set\\.[a-zA-Z0-9_.{}]*"
+        },
+        {
+          "name": "support.function.call.yorl",
+          "match": "@call\\.[a-zA-Z0-9_.{}]*"
+        },
+        {
+          "name": "support.type.object.yorl",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "name": "punctuation.separator.yorl",
+              "match": "[,:]"
+            }
+          ]
+        }
+      ]
+    },
+    "properties": {
+      "patterns": [
+        {
+          "name": "variable.parameter.yorl",
+          "match": "-[a-zA-Z0-9_.{}=-]*"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "entity.name.class.config.yorl",
+          "match": "\\.[a-zA-Z][a-zA-Z0-9_.-]*"
+        },
+        {
+          "name": "entity.name.type.builtin.yorl",
+          "match": "\\b(SIZE|COLOR|POSITION|FORMAT|QUALITY|FILTER|DTYPE|ENCODING|MODEL|ACTIVATION|OPTIMIZER|LOSS)\\.[A-Z_]+\\b"
+        },
+        {
+          "name": "variable.other.yorl",
+          "match": "\\b[a-zA-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.yorl",
+          "match": "[=;,:\\\\]"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.yorl"
+}

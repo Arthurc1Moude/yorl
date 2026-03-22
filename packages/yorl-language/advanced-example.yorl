@@ -1,0 +1,36 @@
+^yorl 1.0.0-2437\
+
+import @path{/home/aimoude149/dep/dep1=#1} -as[dep];
+import @path{/home/aimoude149/models/model1} -as[model];
+
+class -className=advancedBoard(*1) -type=board -@set.{board}.color=#FFFFFF -@set.{board}.size={width:1920,height:1080};
+  .header
+    .header.config -size=100 -position={x:0,y:0} -(txt='Advanced Yorl Example');
+    .header.style -font={family:'Arial',weight:bold} -color=#333333;
+  .content
+    .content.config -size=50 -padding={top:20,bottom:20};
+    .content.text
+      .content.text.config -(txt='Nested content block');
+      .content.text.style -align={horizontal:center,vertical:middle};
+    .content.image
+      .content.image.config -size=200 -(img='@path{/images/logo.png}');
+      .content.image.transform -scale={x:1.5,y:1.5} -rotate=45;
+  .footer
+    .footer.config -size=30 -(txt='Footer text');
+  .model
+    .model.config -type={ai:neural,version:2.0} -(src='@dep{model1}');
+    .model.params -learning_rate=0.001 -batch_size=32 -epochs=100;
+
+function -name=processImage -params={input:string,output:string};
+  @set.{function}.input='@path{/input/image.png}';
+  @set.{function}.output='@path{/output/processed.png}';
+  @call.{dep.imageProcessor} -method=resize -args={width:800,height:600};
+  @call.{dep.imageProcessor} -method=filter -args={type:'blur',intensity:5};
+
+function -name=exportData -params={format:string,destination:string};
+  @set.{export}.format={type:'json',compression:true};
+  @set.{export}.destination='@path{/output/data}';
+
+export class.{advancedBoard(*1)} -as[paf:imageType.png] -to(dir='@path{/home/aimoude149/output}') -with[function:processImage];
+
+^END_OF_YORL @type=config.advanced

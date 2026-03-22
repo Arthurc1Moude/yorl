@@ -1,0 +1,112 @@
+^yorl-builtin 1.0.0\
+# Core Built-in Types and Functions
+# Automatically available in all Yorl programs
+
+# Built-in Object Types
+type.object {
+  position: {x:number, y:number, z:number},
+  size: {width:number, height:number},
+  color: {r:number, g:number, b:number, a:number},
+  transform: {scale:{x:number,y:number}, rotate:number, translate:{x:number,y:number}},
+  font: {family:string, size:number, weight:string, style:string},
+  padding: {top:number, right:number, bottom:number, left:number},
+  margin: {top:number, right:number, bottom:number, left:number}
+}
+
+# Built-in Functions
+function.builtin {
+  # Math functions
+  math.abs: {input:number} -> number,
+  math.min: {a:number, b:number} -> number,
+  math.max: {a:number, b:number} -> number,
+  math.round: {input:number} -> number,
+  math.floor: {input:number} -> number,
+  math.ceil: {input:number} -> number,
+  
+  # String functions
+  string.concat: {a:string, b:string} -> string,
+  string.length: {input:string} -> number,
+  string.upper: {input:string} -> string,
+  string.lower: {input:string} -> string,
+  string.trim: {input:string} -> string,
+  
+  # Color functions
+  color.rgb: {r:number, g:number, b:number} -> color,
+  color.rgba: {r:number, g:number, b:number, a:number} -> color,
+  color.hex: {hex:string} -> color,
+  color.lighten: {color:color, amount:number} -> color,
+  color.darken: {color:color, amount:number} -> color,
+  
+  # Transform functions
+  transform.scale: {x:number, y:number} -> transform,
+  transform.rotate: {angle:number} -> transform,
+  transform.translate: {x:number, y:number} -> transform,
+  transform.combine: {transforms:array} -> transform
+}
+
+# Built-in Config Blocks
+config.builtin {
+  .style: {
+    color: color,
+    background: color,
+    font: font,
+    padding: padding,
+    margin: margin,
+    border: {width:number, color:color, style:string}
+  },
+  
+  .layout: {
+    display: string,
+    position: position,
+    size: size,
+    align: {horizontal:string, vertical:string},
+    flex: {direction:string, wrap:string, justify:string, align:string}
+  },
+  
+  .animation: {
+    duration: number,
+    delay: number,
+    easing: string,
+    iterations: number,
+    direction: string
+  },
+  
+  .transform: {
+    scale: {x:number, y:number},
+    rotate: number,
+    translate: {x:number, y:number},
+    skew: {x:number, y:number}
+  }
+}
+
+# Built-in Constants
+constants.builtin {
+  PI: 3.14159265359,
+  E: 2.71828182846,
+  GOLDEN_RATIO: 1.61803398875,
+  
+  # Color constants
+  COLOR.WHITE: #FFFFFF,
+  COLOR.BLACK: #000000,
+  COLOR.RED: #FF0000,
+  COLOR.GREEN: #00FF00,
+  COLOR.BLUE: #0000FF,
+  COLOR.YELLOW: #FFFF00,
+  COLOR.CYAN: #00FFFF,
+  COLOR.MAGENTA: #FF00FF,
+  
+  # Size constants
+  SIZE.SMALL: 12,
+  SIZE.MEDIUM: 16,
+  SIZE.LARGE: 24,
+  SIZE.XLARGE: 32,
+  
+  # Common positions
+  POSITION.TOP_LEFT: {x:0, y:0},
+  POSITION.TOP_RIGHT: {x:100, y:0},
+  POSITION.BOTTOM_LEFT: {x:0, y:100},
+  POSITION.BOTTOM_RIGHT: {x:100, y:100},
+  POSITION.CENTER: {x:50, y:50}
+}
+
+^END_OF_BUILTIN

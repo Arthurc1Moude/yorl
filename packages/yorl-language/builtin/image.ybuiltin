@@ -1,0 +1,82 @@
+^yorl-builtin 1.0.0\
+# Image Processing Built-ins
+# Image manipulation and processing functions
+
+# Image Types
+type.image {
+  format: {type:string, quality:number, compression:string},
+  dimensions: {width:number, height:number, aspectRatio:number},
+  metadata: {author:string, created:string, modified:string}
+}
+
+# Image Functions
+function.image {
+  # Basic operations
+  image.load: {path:string} -> image,
+  image.save: {image:image, path:string, format:string} -> boolean,
+  image.resize: {image:image, width:number, height:number} -> image,
+  image.crop: {image:image, x:number, y:number, width:number, height:number} -> image,
+  image.rotate: {image:image, angle:number} -> image,
+  image.flip: {image:image, direction:string} -> image,
+  
+  # Filters
+  image.blur: {image:image, intensity:number} -> image,
+  image.sharpen: {image:image, intensity:number} -> image,
+  image.brightness: {image:image, amount:number} -> image,
+  image.contrast: {image:image, amount:number} -> image,
+  image.saturation: {image:image, amount:number} -> image,
+  image.grayscale: {image:image} -> image,
+  image.sepia: {image:image} -> image,
+  image.invert: {image:image} -> image,
+  
+  # Advanced
+  image.composite: {base:image, overlay:image, mode:string} -> image,
+  image.mask: {image:image, mask:image} -> image,
+  image.extract: {image:image, channel:string} -> image,
+  image.convert: {image:image, format:string} -> image
+}
+
+# Image Config Blocks
+config.image {
+  .filter: {
+    type: string,
+    intensity: number,
+    params: object
+  },
+  
+  .export: {
+    format: string,
+    quality: number,
+    compression: string,
+    optimize: boolean
+  },
+  
+  .metadata: {
+    title: string,
+    author: string,
+    description: string,
+    tags: array,
+    copyright: string
+  }
+}
+
+# Image Constants
+constants.image {
+  FORMAT.PNG: 'png',
+  FORMAT.JPEG: 'jpeg',
+  FORMAT.WEBP: 'webp',
+  FORMAT.GIF: 'gif',
+  FORMAT.SVG: 'svg',
+  
+  QUALITY.LOW: 60,
+  QUALITY.MEDIUM: 80,
+  QUALITY.HIGH: 90,
+  QUALITY.MAXIMUM: 100,
+  
+  FILTER.BLUR: 'blur',
+  FILTER.SHARPEN: 'sharpen',
+  FILTER.GRAYSCALE: 'grayscale',
+  FILTER.SEPIA: 'sepia'
+}
+
+^END_OF_BUILTIN

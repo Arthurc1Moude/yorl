@@ -1,0 +1,113 @@
+^yorl-builtin 1.0.0\
+# AI/ML Built-ins
+# Neural networks, models, and AI functions
+
+# AI Types
+type.ai {
+  model: {type:string, version:string, architecture:string, weights:string},
+  tensor: {shape:array, dtype:string, data:array},
+  dataset: {path:string, size:number, split:object},
+  training: {epochs:number, batch_size:number, learning_rate:number}
+}
+
+# AI Functions
+function.ai {
+  # Model operations
+  model.load: {path:string, type:string} -> model,
+  model.save: {model:model, path:string} -> boolean,
+  model.predict: {model:model, input:tensor} -> tensor,
+  model.train: {model:model, dataset:dataset, params:training} -> model,
+  model.evaluate: {model:model, dataset:dataset} -> object,
+  
+  # Neural network layers
+  layer.dense: {units:number, activation:string} -> layer,
+  layer.conv2d: {filters:number, kernel_size:number, activation:string} -> layer,
+  layer.maxpool: {pool_size:number} -> layer,
+  layer.dropout: {rate:number} -> layer,
+  layer.batchnorm: {} -> layer,
+  
+  # Preprocessing
+  preprocess.normalize: {data:tensor, method:string} -> tensor,
+  preprocess.augment: {data:tensor, transforms:array} -> tensor,
+  preprocess.tokenize: {text:string, vocab:object} -> tensor,
+  preprocess.embed: {tokens:tensor, embedding:model} -> tensor,
+  
+  # Loss functions
+  loss.mse: {y_true:tensor, y_pred:tensor} -> number,
+  loss.crossentropy: {y_true:tensor, y_pred:tensor} -> number,
+  loss.binary_crossentropy: {y_true:tensor, y_pred:tensor} -> number,
+  
+  # Optimizers
+  optimizer.sgd: {learning_rate:number, momentum:number} -> optimizer,
+  optimizer.adam: {learning_rate:number, beta1:number, beta2:number} -> optimizer,
+  optimizer.rmsprop: {learning_rate:number, decay:number} -> optimizer
+}
+
+# AI Config Blocks
+config.ai {
+  .model: {
+    type: string,
+    architecture: string,
+    version: string,
+    weights: string,
+    input_shape: array,
+    output_shape: array
+  },
+  
+  .training: {
+    epochs: number,
+    batch_size: number,
+    learning_rate: number,
+    optimizer: string,
+    loss: string,
+    metrics: array,
+    validation_split: number,
+    callbacks: array
+  },
+  
+  .inference: {
+    batch_size: number,
+    device: string,
+    precision: string,
+    optimize: boolean
+  },
+  
+  .hyperparams: {
+    learning_rate: number,
+    momentum: number,
+    weight_decay: number,
+    dropout_rate: number,
+    regularization: string
+  }
+}
+
+# AI Constants
+constants.ai {
+  # Model types
+  MODEL.CNN: 'convolutional',
+  MODEL.RNN: 'recurrent',
+  MODEL.LSTM: 'lstm',
+  MODEL.TRANSFORMER: 'transformer',
+  MODEL.GAN: 'generative_adversarial',
+  
+  # Activation functions
+  ACTIVATION.RELU: 'relu',
+  ACTIVATION.SIGMOID: 'sigmoid',
+  ACTIVATION.TANH: 'tanh',
+  ACTIVATION.SOFTMAX: 'softmax',
+  ACTIVATION.LEAKY_RELU: 'leaky_relu',
+  
+  # Optimizers
+  OPTIMIZER.SGD: 'sgd',
+  OPTIMIZER.ADAM: 'adam',
+  OPTIMIZER.RMSPROP: 'rmsprop',
+  OPTIMIZER.ADAGRAD: 'adagrad',
+  
+  # Loss functions
+  LOSS.MSE: 'mean_squared_error',
+  LOSS.MAE: 'mean_absolute_error',
+  LOSS.CROSSENTROPY: 'categorical_crossentropy',
+  LOSS.BINARY_CROSSENTROPY: 'binary_crossentropy'
+}
+
+^END_OF_BUILTIN
