@@ -87,11 +87,12 @@ int create_linux_executable(const char* yorl_content, const char* output, int gu
     fprintf(fp, ")\n\n");
     
     if (gui) {
-        fprintf(fp, "# GUI mode - requires yolex\n");
-        fprintf(fp, "if command -v yolex &> /dev/null; then\n");
-        fprintf(fp, "    echo \"$YORL_DATA\" | yolex /dev/stdin\n");
+        fprintf(fp, "# GUI mode - requires yorl-gui-renderer\n");
+        fprintf(fp, "if command -v yorl-gui-renderer &> /dev/null; then\n");
+        fprintf(fp, "    echo \"$YORL_DATA\" | yorl-gui-renderer\n");
         fprintf(fp, "else\n");
-        fprintf(fp, "    echo \"Error: yolex not found. Install Yorl SDK.\"\n");
+        fprintf(fp, "    echo \"Error: yorl-gui-renderer not found.\"\n");
+        fprintf(fp, "    echo \"Install: wget https://github.com/Arthurc1Moude/yorl/releases/download/v1.0.0/yorl-gui-renderer\"\n");
         fprintf(fp, "    exit 1\n");
         fprintf(fp, "fi\n");
     } else {
