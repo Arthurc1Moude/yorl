@@ -10,6 +10,8 @@ yolex
 yolex.exe
 ylp
 yorl-gui-renderer
+install-yolex
+install-yolex-gui
 
 # Generated files
 lex.yy.c
@@ -59,6 +61,15 @@ packaging/rpm/RPMS/
 packaging/rpm/SOURCES/
 packaging/rpm/SRPMS/
 packaging/appimage/yorl-installer.AppDir/
+**/AppRun
+
+# All shell scripts and installer binaries
+*.sh
+*.bash
+*.zsh
+*.fish
+**/install-yolex
+**/install-yolex-gui
 
 # NPM packages
 node_modules/
@@ -141,14 +152,6 @@ test-*.yorl
 # JavaScript files (except extension.js)
 *.js
 !packages/yorl-language/extension.js
-
-# Shell scripts (all shells)
-*.sh
-*.bash
-*.zsh
-*.fish
-install-yolex
-install-yolex-gui
 
 # Build scripts and makefiles
 Makefile
