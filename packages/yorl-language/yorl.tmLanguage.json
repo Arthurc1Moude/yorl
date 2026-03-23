@@ -51,8 +51,20 @@
           "match": "\\b(class|import|function|export)\\b"
         },
         {
-          "name": "keyword.other.yorl",
+          "name": "keyword.other.header.yorl",
           "match": "\\^(yorl|END_OF_YORL|yorl-builtin|END_OF_BUILTIN)"
+        },
+        {
+          "name": "keyword.other.version.yorl",
+          "match": "\\b[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+\\b"
+        },
+        {
+          "name": "keyword.other.type.yorl",
+          "match": "\\b(application|board|whiteboard|config|data|image|ai|neural)\\b"
+        },
+        {
+          "name": "keyword.operator.import.yorl",
+          "match": "-as\\[|\\]"
         }
       ]
     },
@@ -64,7 +76,7 @@
           "end": "'",
           "patterns": [
             {
-              "name": "constant.character.escape.yorl",
+              "name": "constant.character.escape.exception.yorl",
               "match": "/em\\+[0-9]+"
             },
             {
@@ -79,7 +91,7 @@
           "end": "\"",
           "patterns": [
             {
-              "name": "constant.character.escape.yorl",
+              "name": "constant.character.escape.exception.yorl",
               "match": "/em\\+[0-9]+"
             },
             {
@@ -87,6 +99,10 @@
               "match": "\\\\."
             }
           ]
+        },
+        {
+          "name": "string.unquoted.paren.yorl",
+          "match": "\\(txt='[^']*'\\)|\\(txt=\"[^\"]*\"\\)|\\(img='[^']*'\\)|\\(img=\"[^\"]*\"\\)|\\(src='[^']*'\\)|\\(src=\"[^\"]*\"\\)"
         }
       ]
     },
@@ -105,8 +121,12 @@
     "colors": {
       "patterns": [
         {
-          "name": "constant.other.color.yorl",
+          "name": "constant.other.color.hex.yorl",
           "match": "#[0-9a-fA-F]{6}\\b"
+        },
+        {
+          "name": "constant.other.color.hex.yorl",
+          "match": "#[0-9a-fA-F]{3}\\b"
         }
       ]
     },
@@ -144,6 +164,13 @@
               "include": "#numbers"
             },
             {
+              "include": "#colors"
+            },
+            {
+              "name": "variable.other.property.yorl",
+              "match": "[a-zA-Z_][a-zA-Z0-9_]*(?=:)"
+            },
+            {
               "name": "punctuation.separator.yorl",
               "match": "[,:]"
             }
@@ -154,8 +181,12 @@
     "properties": {
       "patterns": [
         {
-          "name": "variable.parameter.yorl",
-          "match": "-[a-zA-Z0-9_.{}=-]*"
+          "name": "variable.parameter.property.yorl",
+          "match": "-[a-zA-Z][a-zA-Z0-9_]*(?==)"
+        },
+        {
+          "name": "variable.parameter.flag.yorl",
+          "match": "-[a-zA-Z][a-zA-Z0-9_.-]*"
         }
       ]
     },
@@ -163,11 +194,23 @@
       "patterns": [
         {
           "name": "entity.name.class.config.yorl",
-          "match": "\\.[a-zA-Z][a-zA-Z0-9_.-]*"
+          "match": "\\.[a-zA-Z][a-zA-Z0-9_]*(?=\\s|$)"
+        },
+        {
+          "name": "entity.name.class.nested.yorl",
+          "match": "\\.[a-zA-Z][a-zA-Z0-9_]*\\.[a-zA-Z][a-zA-Z0-9_]*"
         },
         {
           "name": "entity.name.type.builtin.yorl",
           "match": "\\b(SIZE|COLOR|POSITION|FORMAT|QUALITY|FILTER|DTYPE|ENCODING|MODEL|ACTIVATION|OPTIMIZER|LOSS)\\.[A-Z_]+\\b"
+        },
+        {
+          "name": "entity.name.type.canvas.yorl",
+          "match": "\\b(canvas|header|content|footer|config|style|text|shape|drawing|transform)\\b"
+        },
+        {
+          "name": "variable.other.constant.yorl",
+          "match": "\\b(width|height|size|position|color|background|font|family|weight|bold|italic|type|rectangle|circle|line|x|y|scale|rotate|align|horizontal|vertical|center|middle|top|bottom|left|right)\\b"
         },
         {
           "name": "variable.other.yorl",
@@ -178,8 +221,20 @@
     "operators": {
       "patterns": [
         {
-          "name": "keyword.operator.yorl",
-          "match": "[=;,:\\\\]"
+          "name": "keyword.operator.assignment.yorl",
+          "match": "="
+        },
+        {
+          "name": "punctuation.terminator.yorl",
+          "match": ";"
+        },
+        {
+          "name": "punctuation.separator.yorl",
+          "match": "[,:]"
+        },
+        {
+          "name": "punctuation.definition.yorl",
+          "match": "\\\\"
         }
       ]
     }

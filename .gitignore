@@ -142,8 +142,13 @@ test-*.yorl
 *.js
 !packages/yorl-language/extension.js
 
-# Shell scripts
+# Shell scripts (all shells)
 *.sh
+*.bash
+*.zsh
+*.fish
+install-yolex
+install-yolex-gui
 
 # Build scripts and makefiles
 Makefile

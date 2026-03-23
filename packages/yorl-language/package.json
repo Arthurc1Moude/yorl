@@ -1,8 +1,8 @@
 {
-  "name": "@arthurc1moude/yorl-language",
+  "name": "yorl-language",
   "displayName": "Yorl",
-  "description": "Syntax highlighting and language support for Yorl programming language",
-  "version": "1.3.1",
+  "description": "Syntax highlighting and language support for Yorl programming language with GUI whiteboard support",
+  "version": "1.4.0",
   "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
   "license": "SEE LICENSE IN LICENSE",
@@ -20,12 +20,9 @@
     "registry": "https://npm.pkg.github.com"
   },
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.75.0"
   },
   "main": "./extension.js",
-  "activationEvents": [
-    "onLanguage:yorl"
-  ],
   "categories": [
     "Programming Languages"
   ],
