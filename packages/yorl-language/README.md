@@ -1,286 +1,218 @@
-# Yorl Programming Language
+# Yorl Language Support for VS Code
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-ff00ff?style=flat&logo=npm&logoColor=ff00ff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
-[![package size](https://img.shields.io/badge/size-27.1KB-00ffff?style=flat&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/packages)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00ff00?style=flat&labelColor=0d1117)](https://opensource.org/licenses/MIT)
-[![VS Code Extension](https://img.shields.io/badge/VS%20Code-Extension-ff0080?style=flat&logo=visual-studio-code&logoColor=ff0080&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl)
+[![VS Code Extension](https://img.shields.io/badge/VS%20Code-v1.4.1-00ffff?style=flat&labelColor=0d1117&logo=visualstudiocode)](https://marketplace.visualstudio.com/items?itemName=MoudeAI.yorl-language)
+[![GitHub release](https://img.shields.io/github/v/release/Arthurc1Moude/yorl?style=flat&color=ff00ff&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/releases)
+[![License](https://img.shields.io/badge/License-Proprietary-00ff00?style=flat&labelColor=0d1117)](https://github.com/Arthurc1Moude/yorl/blob/main/LICENSE)
 
-## Language Support Package
+**Syntax highlighting and language support for Yorl programming language with built-in compiler!**
 
-This package provides VS Code extension support for the Yorl programming language, including syntax highlighting, language configuration, and example files.
+## ✨ What's Included
 
-**Includes pre-compiled yolex compiler** - No build tools required!
+This extension provides complete Yorl language support for VS Code:
 
-A simple configuration programming language (.yol/.yorl) for defining classes with nested configurations and exports.
+### 🎨 Syntax Highlighting
+- Classes, functions, imports, exports
+- Whiteboard/GUI keywords (canvas, header, content, shape, drawing)
+- Properties and configurations
+- Colors (#RGB, #RRGGBB)
+- Comments with `!`
+- Exception marks `/em+N`
+- Objects and arrays
+- Built-in types and constants
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Language Syntax](#language-syntax)
-- [Data Types](#data-types)
-- [Built-in System](#built-in-system)
-- [Examples](#examples)
-- [Building and Installation](#building-and-installation)
-- [Usage](#usage)
-- [File Extensions](#file-extensions)
-- [Syntax Highlighting](#syntax-highlighting)
-- [Examples](#examples-1)
-- [License](#license)
+### 🔧 Built-in Tools
+- **yolex** (45KB) - Yorl compiler included in extension
+- Compile `.yorl` files directly from VS Code
+- No separate installation needed
 
-## Overview
+### 📁 File Support
+- `.yorl` - Standard Yorl files
+- `.yol` - Short form
+- `.ybuiltin` - Built-in definitions
+- Custom file icons for light/dark themes
 
-Yorl is a configuration programming language designed for defining structured configurations with classes, functions, imports, and exports. It supports nested configurations, built-in types, and a comprehensive standard library.
-
-## Features
-
-- **Simple Syntax**: Clean, readable syntax with Python-like indentation
-- **Built-in Types**: Comprehensive standard library with core, image, data, and AI modules
-- **Nested Configurations**: Infinite nesting depth for complex configurations
-- **Import/Export**: Import dependencies and export configurations
-- **Exception Marks**: Escape special characters in strings with `/em+N` syntax
-- **Comments**: Line comments with `!` and exception marks for special characters
-- **Two Implementations**: Python (development) and C (production)
-
-## Quick Start
+## 🚀 Quick Start
 
 ### Installation
 
+Install from VS Code Marketplace:
+```
+ext install MoudeAI.yorl-language
+```
+
+Or download from: https://marketplace.visualstudio.com/items?itemName=MoudeAI.yorl-language
+
+### Using yolex (Compiler)
+
+The extension includes the `yolex` compiler. After installation:
+
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd Yorl
-
-# Build the C implementation (recommended for production)
-make
-
-# Or use the Python implementation
-python3 yorl.py --help
-```
-
-### Basic Example
-
-```yorl
-^yorl 1.0.0-2437\
-
-! Import dependencies
-import @path{/path/to/dependency} -as[alias];
-
-! Define a class
-class -className=myBoard -type=board -@set.{board}.color=#FFFFFF;
-  .header
-    .header.config -size=100 -(txt='Welcome!');
-  .content
-    .content.config -size=50;
-
-! Export configuration
-export class.{myBoard} -as[png] -to(dir='@path{/output}');
-
-^END_OF_YORL @type=config.none
-```
-
-## Language Syntax
-
-### Comments and Exception Marks
-```yorl
-! This is a comment
-! Use /em+N to escape special characters inside {} objects/arrays
--(txt='Welcome!')  ! Regular string - no escaping needed
--(data={text:'Hello/em+1 World/em+1'})  ! Inside {} - use /em+1 for !
-```
-
-### Data Types
-- **Numbers**: `50`, `100`, `3.14`
-- **Strings**: `'text'` or `"text"` (no `/em+` escaping needed)
-- **Colors**: `#FFFFFF`, `#FF0000`
-- **Objects**: `{key:value, nested:{key:value}}` (use `/em+` inside `{}` for special characters)
-- **URLs**: `@url{https://example.com}`
-- **Paths**: `@path{/absolute/path}`
-- **Dependencies**: `@dep{dependencyName}`
-
-### Core Constructs
-
-#### Classes
-```yorl
-class -className=myClass -type=board -@set.{board}.color=#FFFFFF;
-  .config
-    .config.config -size=100 -(txt='Hello');
-```
-
-#### Functions
-```yorl
-function -name=process -params={input:string,output:string};
-  @set.{function}.input='@path{/input}';
-  @call.{dependency.method} -method=process -args={mode:'fast'};
-```
-
-#### Imports and Exports
-```yorl
-import @path{/path/to/dep} -as[alias];
-export class.{myClass} -as[png] -to(dir='@path{/output}');
-```
-
-## Built-in System
-
-Yorl includes a comprehensive standard library:
-
-### Core Module
-- **Types**: `position`, `size`, `color`, `transform`, `font`, `padding`, `margin`
-- **Functions**: Math, string, color, and transform operations
-- **Constants**: `COLOR.*`, `SIZE.*`, `POSITION.*`
-
-### Image Module
-- **Functions**: `load`, `save`, `resize`, `crop`, `rotate`, `blur`, `sharpen`
-- **Constants**: `FORMAT.PNG`, `QUALITY.HIGH`, `FILTER.BLUR`
-
-### Data Module
-- **Types**: `array`, `dict`, `dataframe`, `series`
-- **Functions**: Array operations, statistics, data manipulation
-- **Constants**: `DTYPE.INT`, `FORMAT.CSV`, `ENCODING.UTF8`
-
-### AI Module
-- **Types**: `model`, `tensor`, `dataset`, `training`
-- **Functions**: Model loading, training, prediction
-- **Constants**: `MODEL.CNN`, `ACTIVATION.RELU`, `OPTIMIZER.ADAM`
-
-## Examples
-
-### Basic Configuration
-```yorl
-^yorl 1.0.0-2437\
-
-class -className=myBoard -type=board;
-  .header
-    .header.config -size=100 -(txt='Welcome');
-  .content
-    .content.config -size=50;
-
-export class.{myBoard} -as[png] -to(dir='@path{/output}');
-
-^END_OF_YORL @type=config.none
-```
-
-### Advanced Example
-```yorl
-^yorl 1.0.0-2437\
-
-import @path{/libs/imagelib} -as[imglib];
-
-class -className=imageProcessor -type=board;
-  .input
-    .input.config -(path='@path{/input/image.jpg}');
-  .processing
-    .processing.config -filters=[
-      {type:FILTER.BLUR, intensity:3},
-      {type:FILTER.SHARPEN, intensity:2}
-    ];
-
-function -name=processImage -params={input:string,output:string};
-  @call.{imglib.load} -path='@path{/input.jpg}';
-  @call.{imglib.resize} -width=800 -height=600;
-  @call.{imglib.save} -format=FORMAT.PNG -quality=QUALITY.HIGH;
-
-export class.{imageProcessor} -as[png] -to(dir='@path{/output}');
-
-^END_OF_YORL @type=config.advanced
-```
-
-## Building and Installation
-
-### Prerequisites
-```bash
-# Ubuntu/Debian
-sudo apt-get install flex bison gcc make
-
-# macOS
-brew install flex bison
-
-# Build
-make
-```
-
-### C Implementation (Production)
-```bash
-make              # Build yolex
-./yolex file.yorl  # Parse a Yorl file
-./yolex --json file.yorl  # Output JSON
-```
-
-### Python Implementation (Development)
-```bash
-python3 yorl.py file.yorl
-python3 yorl.py --debug file.yorl  # Debug mode
-python3 yorl.py --list-builtins    # List built-in functions
-```
-
-## Usage
-
-### Command Line
-```bash
-# Parse and display AST
-./yolex example.yorl
+# Compile a Yorl file
+yolex myapp.yorl
 
 # Output as JSON
-./yolex --json example.yorl
-
-# Parse with Python
-python3 yorl.py example.yorl
+yolex myapp.yorl > output.json
 ```
 
-### File Extensions
-- `.yorl` - Standard Yorl files (recommended)
-- `.yol` - Short form (identical syntax)
-- `.ybuiltin` - Built-in definition files
+### Using ylp (Packager)
 
-### Built-in Functions
-Access built-ins without imports:
+For packaging Yorl apps as executables, download `ylp`:
+
+**Linux:**
+```bash
+wget https://github.com/Arthurc1Moude/yorl/releases/download/v1.0.0/ylp-linux-x64
+chmod +x ylp-linux-x64
+sudo mv ylp-linux-x64 /usr/local/bin/ylp
+```
+
+**Windows:**
+Download `ylp-windows-x64.exe` from [releases](https://github.com/Arthurc1Moude/yorl/releases/tag/v1.0.0)
+
+**Usage:**
+```bash
+# Package as executable
+ylp myapp.yorl -o myapp
+
+# Package for all platforms
+ylp myapp.yorl -o myapp -p all
+
+# Package with GUI support
+ylp gui-app.yorl -o gui-app --gui
+```
+
+## 📖 Language Overview
+
+### Basic Syntax
+
 ```yorl
--size=SIZE.LARGE
--color=COLOR.BLUE
--format=FORMAT.PNG
--optimizer=OPTIMIZER.ADAM
+^yorl 1.0.0-2437\
+
+! This is a comment
+
+class -className=myApp -type=application;
+  .config
+    .config.name -(txt='My Application');
+    .config.version -(txt='1.0.0');
+  .data
+    .data.message -(txt='Hello World!');
+    .data.settings -config={debug:true,port:8080};
+
+^END_OF_YORL
 ```
 
-## Syntax Highlighting
+### GUI Applications
 
-Yorl includes syntax highlighting for:
-- VS Code (via `yorl.tmLanguage.json`)
-- Sublime Text
-- Vim/Neovim
-- Atom
+```yorl
+^yorl 1.0.0-2437\
 
-## Performance
+class -className=board -type=whiteboard;
+  .canvas
+    .canvas.config -size={width:800,height:600} -background=#FFFFFF;
+  .header
+    .header.text -(txt='My GUI App');
+    .header.style -font={family:'Arial',size:24,weight:bold} -color=#333333;
+  .content
+    .content.drawing -type=rectangle -position={x:100,y:100} -size={width:200,height:150} -color=#FF6600;
+    .content.text -(txt='Hello GUI!') -position={x:120,y:160} -color=#FFFFFF;
 
-| Implementation | Speed | Memory | Use Case |
-|----------------|-------|--------|----------|
-| C (yolex) | 10-20x faster | 12.5x less memory | Production |
-| Python | Development | Higher memory | Development |
+^END_OF_YORL
+```
 
-## Examples Directory
+## 🎯 Features
 
-The repository includes:
-- `png-example.yorl` - Basic configuration
-- `advanced-example.yorl` - Advanced features
-- `builtin-example.yorl` - Built-in usage
-- `comments-example.yorl` - Comments and exception marks
+### Language Features
+- ✅ Classes, functions, imports, exports
+- ✅ Nested configurations with dot notation
+- ✅ Properties, objects, arrays
+- ✅ Comments with `!`
+- ✅ Exception marks `/em+N` for escaping
+- ✅ Built-in stdlib: core, image, data, ai
+- ✅ Whiteboard class for GUI applications
+- ✅ Color support (#RGB, #RRGGBB)
+- ✅ Path references (@path, @url, @dep)
 
-## License
+### Extension Features
+- ✅ Syntax highlighting for all Yorl features
+- ✅ File icons (light/dark theme support)
+- ✅ Language configuration
+- ✅ Built-in yolex compiler
+- ✅ Command palette integration
+- ✅ Auto-activation on .yorl files
 
-MIT License - see LICENSE file for details.
+## 📦 Available Tools
 
-## Contributing
+### yolex (Compiler) - Included in Extension
+- **Size**: 45KB
+- **Function**: Compiles .yorl to JSON/AST
+- **Location**: Bundled with extension
+- **Usage**: `yolex file.yorl`
 
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new features
-4. Submit a pull request
+### ylp (Packager) - Download Separately
+- **Linux**: 763KB static binary
+- **Windows**: 255KB executable
+- **Function**: Package Yorl apps as executables
+- **Download**: [GitHub Releases](https://github.com/Arthurc1Moude/yorl/releases/tag/v1.0.0)
+- **Usage**: `ylp file.yorl -o output`
 
-## Support
+### yorl-gui-renderer (GUI Renderer) - Optional
+- **Size**: 17KB
+- **Function**: Renders whiteboard class to GTK4 windows
+- **Download**: [GitHub Releases](https://github.com/Arthurc1Moude/yorl/releases/tag/v1.0.0)
+- **Usage**: Automatically used by ylp with `--gui` flag
 
-- Report issues on GitHub
-- Check the examples directory
-- Review the language specification
+## 🔗 Links
+
+- **GitHub Repository**: https://github.com/Arthurc1Moude/yorl
+- **Releases**: https://github.com/Arthurc1Moude/yorl/releases/tag/v1.0.0
+- **VS Code Marketplace**: https://marketplace.visualstudio.com/items?itemName=MoudeAI.yorl-language
+- **Issues**: https://github.com/Arthurc1Moude/yorl/issues
+
+## 📚 Documentation
+
+- [Main README](https://github.com/Arthurc1Moude/yorl/blob/main/README.md)
+- [YLP Guide](https://github.com/Arthurc1Moude/yorl/blob/main/YLP-README.md)
+- [Packaging Guide](https://github.com/Arthurc1Moude/yorl/blob/main/PACKAGING-GUIDE.md)
+- [Release Notes](https://github.com/Arthurc1Moude/yorl/blob/main/RELEASE-NOTES.md)
+
+## 🎨 Syntax Highlighting Examples
+
+The extension provides rich syntax highlighting for:
+
+- **Keywords**: `class`, `import`, `function`, `export`
+- **Types**: `application`, `board`, `whiteboard`, `config`, `data`
+- **Properties**: `-className`, `-type`, `-size`, `-color`
+- **Colors**: `#FFFFFF`, `#FF6600`, `#333`
+- **Strings**: `'text'`, `"text"`, `-(txt='text')`
+- **Numbers**: `42`, `3.14`, `800`
+- **Comments**: `! This is a comment`
+- **Exception Marks**: `/em+1`, `/em+2`
+- **Objects**: `{key:value, nested:{...}}`
+- **Special Syntax**: `@path{...}`, `@url{...}`, `@dep{...}`
+
+## 🛠️ Commands
+
+- **Yorl: Compile Current File** - Compile the active .yorl file
+
+## 📄 License
+
+Proprietary License - Download & Share Only
+
+See [LICENSE](https://github.com/Arthurc1Moude/yorl/blob/main/LICENSE) for details.
+
+## 🤝 Contributing
+
+Issues and feature requests are welcome!
+
+Visit the [issues page](https://github.com/Arthurc1Moude/yorl/issues).
+
+## 👨‍💻 Author
+
+**Arthurc1Moude**
+
+- GitHub: [@Arthurc1Moude](https://github.com/Arthurc1Moude)
 
 ---
 
-**Yorl Language** - A modern configuration language for structured data and transformations.
+**Version**: 1.4.1  
+**Release Date**: March 22, 2026  
+**Built with ❤️ by Arthurc1Moude**
