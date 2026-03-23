@@ -13,6 +13,9 @@ yorl-gui-renderer
 install-yolex
 install-yolex-gui
 
+# But allow yolex in VS Code extension
+!packages/yorl-language/yolex
+
 # Generated files
 lex.yy.c
 yorl.tab.c

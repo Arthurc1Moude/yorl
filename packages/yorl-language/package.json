@@ -2,7 +2,7 @@
   "name": "yorl-language",
   "displayName": "Yorl",
   "description": "Syntax highlighting and language support for Yorl programming language with GUI whiteboard support",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "publisher": "MoudeAI",
   "author": "Arthurc1Moude",
   "license": "SEE LICENSE IN LICENSE",
